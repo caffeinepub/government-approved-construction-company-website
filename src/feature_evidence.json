@@ -1,0 +1,49 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-change-the-website-s-overall-visual-theme-by-updating-the-global-design-tokens-colors-radius-shadows-typography-so-the-site-has-a-noticeably-different-but-still-professional-trustworthy-industrial-look-and-keep-blue-purple-from-being-the-dominant-colors",
+      "featureTitle": "Change the website’s overall visual theme by updating the global design tokens (colors, radius, shadows, typography) so the site has a noticeably different but still professional, trustworthy, industrial look, and keep blue/purple from being the dominant colors.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-key-page-sections-and-shared-layout-header-footer-home-hero-and-card-heavy-sections-to-ensure-the-new-theme-is-applied-consistently-and-any-hardcoded-color-classes-that-conflict-with-the-new-tokens-are-adjusted-to-use-token-driven-styles",
+      "featureTitle": "Update key page sections and shared layout (Header, Footer, Home hero, and card-heavy sections) to ensure the new theme is applied consistently and any hardcoded color classes that conflict with the new tokens are adjusted to use token-driven styles.",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/components/projects/ProjectCard.tsx",
+        "frontend/src/components/projects/ProjectDetailModal.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

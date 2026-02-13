@@ -1,0 +1,69 @@
+{
+  "kind": "build_request",
+  "title": "Update website visual theme",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Change the website’s overall visual theme by updating the global design tokens (colors, radius, shadows, typography) so the site has a noticeably different but still professional, trustworthy, industrial look, and keep blue/purple from being the dominant colors.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-1"
+        ],
+        "quotes": [
+          "change theme of the website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Global theme tokens are updated in a single source of truth (e.g., CSS variables/Tailwind tokens) so the change applies site-wide.",
+        "Primary/secondary/accent/background/foreground/border colors are updated to a new cohesive palette and are not predominantly blue or purple.",
+        "Typography, border radius, and shadows reflect the updated theme and remain consistent across pages.",
+        "Text contrast remains readable in both light and dark modes (no low-contrast primary text on primary backgrounds)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update key page sections and shared layout (Header, Footer, Home hero, and card-heavy sections) to ensure the new theme is applied consistently and any hardcoded color classes that conflict with the new tokens are adjusted to use token-driven styles.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-1"
+        ],
+        "quotes": [
+          "change theme of the website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header navigation active/hover states still look correct under the new theme (no clashing backgrounds/foregrounds).",
+        "Footer background, borders, and link states match the new theme and remain accessible.",
+        "Home hero section remains visually strong with the existing hero image and updated theme colors; buttons and badges remain legible.",
+        "Cards (e.g., Services/Projects) still have appropriate hover/active styling consistent with the new theme."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/components/ui (Shadcn UI sources are read-only and must be composed, not edited).",
+    "Do not change backend behavior or schema; this request is theme-only.",
+    "Keep existing static generated images and paths intact (e.g., /assets/generated/*)."
+  ],
+  "nonGoals": [
+    "Adding new pages or new business features.",
+    "Changing existing user-facing copy/content beyond what is required to support the theme update.",
+    "Replacing or regenerating existing images (logo, hero, badge, project thumbnails)."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

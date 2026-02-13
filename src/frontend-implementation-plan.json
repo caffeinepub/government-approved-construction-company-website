@@ -1,0 +1,71 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Industrial theme refresh via global tokens and layout section alignment",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Update global design tokens (colors, radius, shadows, typography) to a new industrial, professional palette that is not predominantly blue/purple, maintaining accessible contrast in light/dark modes.",
+      "acceptanceCriteria": [
+        "Global theme tokens are updated in a single source of truth (e.g., CSS variables/Tailwind tokens) so the change applies site-wide.",
+        "Primary/secondary/accent/background/foreground/border colors are updated to a new cohesive palette and are not predominantly blue or purple.",
+        "Typography, border radius, and shadows reflect the updated theme and remain consistent across pages.",
+        "Text contrast remains readable in both light and dark modes (no low-contrast primary text on primary backgrounds)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Revise the global CSS variable theme tokens for both :root and .dark (background/foreground/card/popover/primary/secondary/accent/muted/border/ring, plus charts) to a cohesive industrial palette (e.g., graphite/stone bases with warm safety accent tones) that avoids blue/purple dominance; also update global typography settings (font stack/weights/letter-spacing as needed) and the --radius token to match the new theme."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Align Tailwind extensions with the updated tokens: ensure color mappings continue to reference the CSS variables, adjust borderRadius mappings if token semantics change, and update/expand boxShadow tokens (e.g., refine shadow-construction) to match the new industrial depth without changing shadcn/ui source files."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Apply the updated token-driven theme consistently across shared layout and key page sections by removing or adjusting hardcoded color classes that conflict with the new tokens.",
+      "acceptanceCriteria": [
+        "Header navigation active/hover states still look correct under the new theme (no clashing backgrounds/foregrounds).",
+        "Footer background, borders, and link states match the new theme and remain accessible.",
+        "Home hero section remains visually strong with the existing hero image and updated theme colors; buttons and badges remain legible.",
+        "Cards (e.g., Services/Projects) still have appropriate hover/active styling consistent with the new theme."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Adjust any navigation styling that may be overly tied to the previous palette (active/hover backgrounds/foregrounds, muted usage, transparency) to rely on token-driven Tailwind colors (bg-background/bg-muted/bg-secondary etc.) so states remain legible and non-clashing under the new tokens."
+        },
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "modify",
+          "description": "Update footer container/background/border and link/hover styles to consistently use token-driven colors (muted/foreground/border/secondary) and ensure accessible contrast with the updated theme, without changing any copy or removing existing elements."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Refactor hero and CTA section styling to avoid hardcoded/old-theme-specific classes (e.g., primary-foreground alpha borders/backgrounds) and ensure Badge/Button variants and overlayed hero image remain strong and readable using the new tokens; keep existing static generated images and paths intact (including /assets/generated/hero-construction.dim_1600x800.png and /assets/generated/gov-approved-badge.dim_512x512.png)."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Ensure card-heavy service grids and section backgrounds use token-driven classes (muted/background/border) and that icon accent colors remain appropriate with the updated palette; keep content unchanged aside from styling alignment."
+        },
+        {
+          "path": "frontend/src/components/projects/ProjectCard.tsx",
+          "operation": "modify",
+          "description": "Tune project card hover/active styling (shadow, scale, muted surfaces) so it matches the updated theme depth and token-driven colors, keeping interactions consistent and professional."
+        },
+        {
+          "path": "frontend/src/components/projects/ProjectDetailModal.tsx",
+          "operation": "modify",
+          "description": "Align modal surfaces (DialogContent, image container background, any rounded/shadow usage) with updated tokens so project detail presentation matches the new theme without editing any files under frontend/src/components/ui."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Website project: build a government-approved construction site website.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-responsive-multi-page-website-for-a-government-approved-construction-company-with-the-following-pages-sections-and-english-user-facing-text-home-hero-value-proposition-about-company-overview-services-projects-portfolio-government-approvals-compliance-approval-statement-certification-permit-list-approval-registration-numbers-as-text-fields-safety-quality-and-contact-address-phone-email-contact-form",
+      "title": "Create a responsive multi-page website for a government-approved construction company with the following pages/sections and English user-facing text: Home (hero + value proposition), About (company overview), Services, Projects/Portfolio, Government Approvals & Compliance (approval statement, certification/permit list, approval/registration numbers as text fields), Safety & Quality, and Contact (address/phone/email + contact form).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-coherent-visual-theme-suitable-for-a-government-approved-construction-brand-professional-trustworthy-industrial-and-apply-it-consistently-across-typography-spacing-colors-buttons-cards-and-section-layouts-avoid-blue-purple-as-dominant-colors",
+      "title": "Implement a coherent visual theme suitable for a government-approved construction brand (professional, trustworthy, industrial) and apply it consistently across typography, spacing, colors, buttons, cards, and section layouts (avoid blue/purple as dominant colors).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-reusable-header-logo-navigation-and-footer-quick-links-contact-details-business-hours-and-compliance-disclaimer-text-visible-across-the-site",
+      "title": "Add a reusable header (logo + navigation) and footer (quick links, contact details, business hours, and compliance disclaimer text) visible across the site.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-projects-portfolio-section-with-a-grid-of-project-cards-title-location-year-short-description-and-image-and-a-project-detail-view-modal-for-each-item-using-local-seed-data-no-external-api",
+      "title": "Create a Projects/Portfolio section with a grid of project cards (title, location, year, short description, and image) and a project detail view/modal for each item using local seed data (no external API).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-contact-form-that-allows-visitors-to-submit-inquiries-name-email-phone-subject-message-and-persist-submissions-in-the-motoko-backend-canister",
+      "title": "Implement a Contact form that allows visitors to submit inquiries (name, email, phone, subject, message) and persist submissions in the Motoko backend canister.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-admin-only-page-to-view-submitted-contact-inquiries-list-view-detail-view-protected-by-internet-identity-login-only-authenticated-users-can-access-the-admin-route",
+      "title": "Add a simple admin-only page to view submitted contact inquiries (list view + detail view) protected by Internet Identity login; only authenticated users can access the admin route.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-basic-seo-and-trust-signals-set-page-titles-metadata-per-page-include-a-prominent-government-approved-badge-mark-on-the-home-page-and-include-an-approvals-compliance-summary-block-on-the-home-page-that-links-to-the-full-compliance-page",
+      "title": "Add basic SEO and trust signals: set page titles/metadata per page, include a prominent 'Government Approved' badge/mark on the Home page, and include an Approvals & Compliance summary block on the Home page that links to the full compliance page.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-required-generated-images-as-static-assets-under-frontend-public-assets-generated-and-reference-them-in-the-ui-no-backend-image-serving",
+      "title": "Integrate required generated images as static assets under frontend/public/assets/generated and reference them in the UI (no backend image serving).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-website-s-overall-visual-theme-by-updating-the-global-design-tokens-colors-radius-shadows-typography-so-the-site-has-a-noticeably-different-but-still-professional-trustworthy-industrial-look-and-keep-blue-purple-from-being-the-dominant-colors",
+      "title": "Change the website’s overall visual theme by updating the global design tokens (colors, radius, shadows, typography) so the site has a noticeably different but still professional, trustworthy, industrial look, and keep blue/purple from being the dominant colors.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-key-page-sections-and-shared-layout-header-footer-home-hero-and-card-heavy-sections-to-ensure-the-new-theme-is-applied-consistently-and-any-hardcoded-color-classes-that-conflict-with-the-new-tokens-are-adjusted-to-use-token-driven-styles",
+      "title": "Update key page sections and shared layout (Header, Footer, Home hero, and card-heavy sections) to ensure the new theme is applied consistently and any hardcoded color classes that conflict with the new tokens are adjusted to use token-driven styles.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a government-approved construction site website.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Change/update the website visual theme (overall styling/branding).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Government-approved construction company website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
