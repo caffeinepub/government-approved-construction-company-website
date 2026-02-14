@@ -11,7 +11,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
     <Card
-      className="overflow-hidden cursor-pointer border-2 transition-all hover:shadow-construction-lg hover:scale-[1.02] hover:border-secondary/50 group"
+      className="overflow-hidden cursor-pointer transition-all hover:shadow-construction hover:scale-[1.02] group"
       onClick={onClick}
     >
       <div className="aspect-[4/3] overflow-hidden bg-muted">

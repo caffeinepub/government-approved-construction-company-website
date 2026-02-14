@@ -47,7 +47,7 @@ export default function ServicesPage() {
 
   return (
     <div>
-      <PageSection className="bg-muted/50">
+      <PageSection className="bg-muted/30">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-4xl font-bold md:text-5xl">Our Services</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -62,7 +62,7 @@ export default function ServicesPage() {
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <Card key={service.title} className="border-2 transition-all hover:shadow-construction hover:border-secondary/50">
+              <Card key={service.title} className="transition-all hover:shadow-construction">
                 <CardHeader>
                   <Icon className="h-12 w-12 text-secondary mb-3" />
                   <CardTitle>{service.title}</CardTitle>
@@ -76,7 +76,7 @@ export default function ServicesPage() {
         </div>
       </PageSection>
 
-      <PageSection className="bg-muted/50">
+      <PageSection className="bg-muted/30">
         <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="text-3xl font-bold text-center mb-8">Our Approach</h2>
           <div className="grid gap-6 md:grid-cols-2">

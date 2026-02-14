@@ -17,7 +17,7 @@ export default function HomePage() {
           <img
             src="/assets/generated/hero-construction.dim_1600x800.png"
             alt="Construction site"
-            className="h-full w-full object-cover opacity-25"
+            className="h-full w-full object-cover opacity-20"
           />
         </div>
         <div className="relative container py-24 md:py-32">
@@ -28,7 +28,7 @@ export default function HomePage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Building Excellence, Ensuring Safety
             </h1>
-            <p className="text-lg text-primary-foreground/95 md:text-xl">
+            <p className="text-lg text-primary-foreground/90 md:text-xl">
               Your trusted partner for government-approved construction projects. Licensed, bonded, and insured with a
               proven track record of delivering quality infrastructure, commercial, and residential developments.
             </p>
@@ -38,7 +38,7 @@ export default function HomePage() {
                   Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20">
+              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
                 <Link to="/projects">View Projects</Link>
               </Button>
             </div>
@@ -47,7 +47,7 @@ export default function HomePage() {
       </section>
 
       {/* Government Approval Badge Section */}
-      <PageSection className="bg-muted/50">
+      <PageSection className="bg-muted/30">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
           <div className="shrink-0">
             <img
@@ -99,7 +99,7 @@ export default function HomePage() {
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <Card className="border-2 hover:border-secondary/50 transition-all">
+          <Card>
             <CardHeader>
               <Shield className="h-10 w-10 text-secondary mb-2" />
               <CardTitle>Safety First</CardTitle>
@@ -111,7 +111,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:border-secondary/50 transition-all">
+          <Card>
             <CardHeader>
               <Award className="h-10 w-10 text-secondary mb-2" />
               <CardTitle>Quality Assured</CardTitle>
@@ -123,7 +123,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:border-secondary/50 transition-all">
+          <Card>
             <CardHeader>
               <Building2 className="h-10 w-10 text-secondary mb-2" />
               <CardTitle>Proven Experience</CardTitle>
@@ -135,7 +135,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:border-secondary/50 transition-all">
+          <Card>
             <CardHeader>
               <Users className="h-10 w-10 text-secondary mb-2" />
               <CardTitle>Expert Team</CardTitle>
@@ -153,7 +153,7 @@ export default function HomePage() {
       <PageSection className="bg-primary text-primary-foreground">
         <div className="text-center max-w-3xl mx-auto space-y-6">
           <h2 className="text-3xl font-bold md:text-4xl">Ready to Start Your Project?</h2>
-          <p className="text-lg text-primary-foreground/95">
+          <p className="text-lg text-primary-foreground/90">
             Contact us today for a free consultation and discover how our government-approved construction services can
             bring your vision to life.
           </p>
@@ -161,7 +161,7 @@ export default function HomePage() {
             <Button asChild size="lg" variant="secondary">
               <Link to="/contact">Contact Us Today</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20">
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
               <Link to="/services">Our Services</Link>
             </Button>
           </div>

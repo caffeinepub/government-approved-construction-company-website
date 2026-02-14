@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center space-x-3">
           <BrandLogo className="h-10 w-10" />
@@ -41,10 +41,10 @@ export default function Header() {
             <Link
               key={item.path}
               to={item.path}
-              className={`px-4 py-2 text-sm font-medium transition-colors rounded-md ${
+              className={`px-3 py-2 text-sm font-medium transition-colors rounded-sm ${
                 isActive(item.path)
                   ? 'bg-secondary text-secondary-foreground'
-                  : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
               }`}
             >
               {item.label}
@@ -67,10 +67,10 @@ export default function Header() {
                   key={item.path}
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 text-base font-medium transition-colors rounded-md ${
+                  className={`px-4 py-3 text-base font-medium transition-colors rounded-sm ${
                     isActive(item.path)
                       ? 'bg-secondary text-secondary-foreground'
-                      : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
                 >
                   {item.label}

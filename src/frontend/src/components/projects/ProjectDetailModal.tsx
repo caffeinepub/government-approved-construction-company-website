@@ -38,7 +38,7 @@ export default function ProjectDetailModal({ project, open, onOpenChange }: Proj
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-6">
-          <div className="aspect-[4/3] overflow-hidden rounded-md bg-muted border-2">
+          <div className="aspect-[4/3] overflow-hidden rounded-sm bg-muted">
             <img
               src={project.image}
               alt={project.title}

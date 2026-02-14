@@ -1,59 +1,176 @@
 {
   "kind": "build_request",
-  "title": "Update website visual theme",
+  "title": "Government-approved construction company website",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-9",
-      "text": "Change the website’s overall visual theme by updating the global design tokens (colors, radius, shadows, typography) so the site has a noticeably different but still professional, trustworthy, industrial look, and keep blue/purple from being the dominant colors.",
+      "id": "REQ-1",
+      "text": "Create a responsive multi-page website for a government-approved construction company with the following pages/sections and English user-facing text: Home (hero + value proposition), About (company overview), Services, Projects/Portfolio, Government Approvals & Compliance (approval statement, certification/permit list, approval/registration numbers as text fields), Safety & Quality, and Contact (address/phone/email + contact form).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-2"
         ],
         "quotes": [
-          "change theme of the website"
+          "create  website for constructions site which is by government approved"
         ]
       },
       "acceptanceCriteria": [
-        "Global theme tokens are updated in a single source of truth (e.g., CSS variables/Tailwind tokens) so the change applies site-wide.",
-        "Primary/secondary/accent/background/foreground/border colors are updated to a new cohesive palette and are not predominantly blue or purple.",
-        "Typography, border radius, and shadows reflect the updated theme and remain consistent across pages.",
-        "Text contrast remains readable in both light and dark modes (no low-contrast primary text on primary backgrounds)."
+        "Site includes navigation to Home, About, Services, Projects, Government Approvals & Compliance, Safety & Quality, and Contact sections/pages.",
+        "All pages render correctly on mobile and desktop and use English text.",
+        "Government Approvals & Compliance section includes clearly labeled fields for approval/registration details (with placeholder values that can be edited later)."
       ]
     },
     {
-      "id": "REQ-10",
-      "text": "Update key page sections and shared layout (Header, Footer, Home hero, and card-heavy sections) to ensure the new theme is applied consistently and any hardcoded color classes that conflict with the new tokens are adjusted to use token-driven styles.",
+      "id": "REQ-2",
+      "text": "Implement a coherent visual theme suitable for a government-approved construction brand (professional, trustworthy, industrial) and apply it consistently across typography, spacing, colors, buttons, cards, and section layouts (avoid blue/purple as dominant colors).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-2"
         ],
         "quotes": [
-          "change theme of the website"
+          "create  website for constructions site which is by government approved"
         ]
       },
       "acceptanceCriteria": [
-        "Header navigation active/hover states still look correct under the new theme (no clashing backgrounds/foregrounds).",
-        "Footer background, borders, and link states match the new theme and remain accessible.",
-        "Home hero section remains visually strong with the existing hero image and updated theme colors; buttons and badges remain legible.",
-        "Cards (e.g., Services/Projects) still have appropriate hover/active styling consistent with the new theme."
+        "The site uses a consistent design system (colors, type scale, component styles) across all pages.",
+        "Primary palette is not dominated by blue/purple.",
+        "All major sections have clear hierarchy, readable contrast, and consistent spacing."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a reusable header (logo + navigation) and footer (quick links, contact details, business hours, and compliance disclaimer text) visible across the site.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create  website for constructions site which is by government approved"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header and footer appear consistently across all pages/sections.",
+        "Navigation highlights the current section/page and works on mobile (collapsible menu).",
+        "Footer contains a short disclaimer indicating approvals/certifications are subject to verification and may vary by project (placeholder wording editable later)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a Projects/Portfolio section with a grid of project cards (title, location, year, short description, and image) and a project detail view/modal for each item using local seed data (no external API).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create  website for constructions site which is by government approved"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Projects list displays at least 6 seeded project entries.",
+        "Each project card shows the required fields and an image.",
+        "Users can open a project detail view from the grid and return back easily."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement a Contact form that allows visitors to submit inquiries (name, email, phone, subject, message) and persist submissions in the Motoko backend canister.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create  website for constructions site which is by government approved"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Contact form validates required fields and shows inline error messages.",
+        "On successful submission, the UI shows a confirmation state and clears the form.",
+        "Submissions are stored in the backend with an ID and timestamp and can be fetched back via a backend method."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add a simple admin-only page to view submitted contact inquiries (list view + detail view) protected by Internet Identity login; only authenticated users can access the admin route.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create  website for constructions site which is by government approved"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin page is not accessible when logged out (redirect or access denied state).",
+        "When logged in, admin can see a list of inquiries stored in the backend and open an inquiry detail view.",
+        "Unauthenticated users cannot read inquiries from the UI."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add basic SEO and trust signals: set page titles/metadata per page, include a prominent 'Government Approved' badge/mark on the Home page, and include an Approvals & Compliance summary block on the Home page that links to the full compliance page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create  website for constructions site which is by government approved"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each page has an appropriate document title.",
+        "Home page includes a visible government-approval badge/mark and a short compliance summary block with a link to the compliance page/section.",
+        "Compliance page contains the expanded approvals/certification content referenced on Home."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Integrate required generated images as static assets under frontend/public/assets/generated and reference them in the UI (no backend image serving).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create  website for constructions site which is by government approved"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated and render correctly in the relevant sections.",
+        "Images are loaded directly by the frontend and are not proxied through the backend."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/components/ui (Shadcn UI sources are read-only and must be composed, not edited).",
-    "Do not change backend behavior or schema; this request is theme-only.",
-    "Keep existing static generated images and paths intact (e.g., /assets/generated/*)."
+    "Backend must remain a single Motoko actor (all backend logic in backend/main.mo).",
+    "Do not modify any files under frontend/src/components/ui (compose components instead).",
+    "Do not edit immutable hook/bootstrapping files listed by the platform (use safe wrappers/components where needed).",
+    "Do not use any third-party authentication providers; only Internet Identity is allowed."
   ],
   "nonGoals": [
-    "Adding new pages or new business features.",
-    "Changing existing user-facing copy/content beyond what is required to support the theme update.",
-    "Replacing or regenerating existing images (logo, hero, badge, project thumbnails)."
+    "Implementing real-time chat or live project updates.",
+    "Integrating external government databases/APIs for automatic approval verification.",
+    "Adding e-commerce, payments, or client portals beyond the simple admin inquiries viewer.",
+    "Uploading files (e.g., permit PDFs) via the website."
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Wide hero banner image: construction site with cranes, workers in safety gear, and a clean skyline (hero-construction.dim_1600x800.png)",
+      "Official-looking 'Government Approved' badge/seal graphic (gov-approved-badge.dim_512x512.png)",
+      "Simple construction company logo mark with text placeholder (construction-logo.dim_512x512.png)",
+      "Set of 6 project thumbnail images showing different construction project types (project-thumb-01.dim_800x600.png)",
+      "Set of 6 project thumbnail images showing different construction project types (project-thumb-02.dim_800x600.png)",
+      "Set of 6 project thumbnail images showing different construction project types (project-thumb-03.dim_800x600.png)",
+      "Set of 6 project thumbnail images showing different construction project types (project-thumb-04.dim_800x600.png)",
+      "Set of 6 project thumbnail images showing different construction project types (project-thumb-05.dim_800x600.png)",
+      "Set of 6 project thumbnail images showing different construction project types (project-thumb-06.dim_800x600.png)"
+    ],
     "edits": []
   },
   "userProfileUpdate": {
