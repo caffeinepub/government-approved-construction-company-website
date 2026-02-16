@@ -24,5 +24,8 @@
   "frontend/src/pages/CompliancePage.tsx": "Government approvals and compliance page with compliance statement, certification categories with placeholder numbers, and industry memberships.",
   "frontend/src/pages/SafetyQualityPage.tsx": "Safety and quality page detailing safety culture, training, hazard prevention, QA/QC processes, and standards/certifications.",
   "frontend/src/pages/ContactPage.tsx": "Contact page with contact information cards (address, phone, email, hours) and integrated contact form.",
-  "frontend/src/pages/admin/AdminInquiriesPage.tsx": "Admin-only page protected by AdminRouteGuard showing list of contact submissions with selectable detail view."
+  "frontend/src/pages/admin/AdminInquiriesPage.tsx": "Admin-only page protected by AdminRouteGuard showing list of contact submissions with selectable detail view.",
+  "frontend/scripts/package-source.sh": "Bash script that creates a deterministic ZIP archive of the full project source (frontend + backend + config) while excluding large/generated folders like node_modules, .dfx, and dist.",
+  "frontend/scripts/package-source.exclude.txt": "Centralized list of exclusion patterns for the packaging script to keep the ZIP source-focused by excluding node_modules, build artifacts, caches, logs, and OS/IDE files.",
+  "frontend/EXPORT_ZIP.md": "Comprehensive English documentation explaining prerequisites (Node.js, DFX), how to generate the ZIP, extract it, install dependencies, run locally, deploy the Motoko canister, and troubleshoot common issues."
 }

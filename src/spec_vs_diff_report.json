@@ -1,125 +1,40 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T09:41:37.316Z",
-  "summary": "Diff adds a TanStack Router multi-page frontend shell (header/footer/layout), projects grid components + seeded data, contact form with validation + backend submission, and an admin inquiries area with an Internet Identity-based guard and backend admin-only read APIs. However, several BuildRequest acceptance criteria are not evidenced or are not implemented as required (notably inquiry persistence with ID/timestamp, admin route protection wiring, and page-level SEO titles/content). Also includes backend access-control/user-profile features and secret-token initialization logic not requested.",
+  "generatedAt": "2026-02-16T13:58:42.850Z",
+  "summary": "Diff adds a bash packaging script plus an exclude list to generate a root-level project-source.zip, and adds an export guide markdown file. It also modifies project_state.json and frontend-file-summaries.txt, which are not part of the BuildRequest requirements. Documentation content appears truncated/incomplete in the provided diff excerpt, so REQ-2 cannot be fully verified.",
   "missing_requirements": [
     {
-      "id": "REQ-1",
-      "requirement": "Government Approvals & Compliance section includes clearly labeled fields for approval/registration details (with placeholder values editable later).",
-      "reason": "A /compliance route exists, but the diff summary does not include the CompliancePage implementation or any evidence of labeled approval/registration number fields and placeholder values.",
+      "id": "REQ-2",
+      "requirement": "Add clear, English documentation describing how to obtain and use the exported ZIP (how to unzip, install dependencies, run locally, and deploy to the Internet Computer).",
+      "reason": "A documentation file was added, but in the provided truncated content it only clearly shows prerequisites and starts a 'Generating the Source ZIP' section; it does not show (in the available diff text) the required exact steps to unzip, install dependencies, start the frontend, and deploy with dfx, nor an explicit mention of backend/frontend folder structure.",
       "evidence": [
-        "frontend/src/App.tsx (route '/compliance' -> CompliancePage; page content not shown)"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "requirement": "Submissions are stored in the backend with an ID and timestamp and can be fetched back via a backend method.",
-      "reason": "backend/main.mo stores submissions as an array of ContactSubmission containing only name/email/phone/subject/message. No ID or timestamp is stored or returned. Fetch methods exist but return ContactSubmission only.",
-      "evidence": [
-        "backend/main.mo (type ContactSubmission lacks id/timestamp; var submissions : [ContactSubmission])",
-        "backend/main.mo (getAllSubmissions() : async [ContactSubmission])",
-        "backend/main.mo (getSubmissionByIndex() : async ?ContactSubmission)"
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "requirement": "Admin-only page is protected by Internet Identity login; only authenticated users can access the admin route (redirect or access denied).",
-      "reason": "An AdminRouteGuard component exists, but the /admin/inquiries route in App.tsx points directly to AdminInquiriesPage with no evidence that it is wrapped by AdminRouteGuard. AdminInquiriesPage file content is not included in the diff summary, so protection cannot be confirmed.",
-      "evidence": [
-        "frontend/src/App.tsx (route '/admin/inquiries' -> AdminInquiriesPage)",
-        "frontend/src/components/auth/AdminRouteGuard.tsx"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "requirement": "Set page titles/metadata per page (each page has an appropriate document title).",
-      "reason": "A useDocumentTitle hook is added, but there is no evidence in the diff summary that any page component calls it (page implementations are not shown).",
-      "evidence": [
-        "frontend/src/hooks/useDocumentTitle.ts",
-        "frontend/src/App.tsx (pages referenced but page contents not shown)"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "requirement": "Home page includes a prominent 'Government Approved' badge/mark and an Approvals & Compliance summary block that links to the full compliance page/section; compliance page contains expanded approvals content referenced on Home.",
-      "reason": "Required assets and routes are referenced, but the diff summary does not include HomePage or CompliancePage implementations, so there is no evidence the badge image is rendered on Home or that the summary block/link exists and matches expanded compliance content.",
-      "evidence": [
-        "frontend/src/App.tsx (HomePage and CompliancePage referenced; implementations not shown)",
-        "frontend/src/components/brand/BrandLogo.tsx (logo image only; no gov-approved badge usage shown)"
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "requirement": "Integrate required generated images as static assets under frontend/public/assets/generated and reference them in the UI.",
-      "reason": "UI references generated image paths (logo and project thumbnails), but the diff summary does not show the actual image files under frontend/public/assets/generated (some added files were omitted due to limits). Presence of all required images cannot be verified from shown diffs alone.",
-      "evidence": [
-        "frontend/src/components/brand/BrandLogo.tsx (references /assets/generated/construction-logo.dim_512x512.png)",
-        "frontend/src/data/projects.ts (references /assets/generated/project-thumb-*.dim_800x600.png)",
-        "file-diff note: 'Omitted files due to limits: added=16'"
+        "frontend/EXPORT_ZIP.md"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "User profile management APIs (getCallerUserProfile, getUserProfile, saveCallerUserProfile) and related storage.",
-      "reason": "BuildRequest does not mention user profiles; only contact inquiries and admin viewing are required.",
+      "description": "Updated internal project tracking/state metadata (marked requests as pending, etc.).",
+      "reason": "The BuildRequest asks for a packaging/export workflow and documentation; it does not request changes to project_state.json.",
       "evidence": [
-        "backend/main.mo (UserProfile type and profile methods)"
+        "project_state.json"
       ]
     },
     {
-      "description": "Admin ability to delete contact submissions via deleteSubmission endpoint.",
-      "reason": "BuildRequest REQ-6 asks for viewing inquiries (list + detail) and access control; deletion is not requested.",
+      "description": "Modified frontend-file-summaries.txt.",
+      "reason": "The BuildRequest does not request updating a frontend summaries file; this appears unrelated to adding a ZIP export workflow and documentation.",
       "evidence": [
-        "backend/main.mo (deleteSubmission(index : Nat))"
-      ]
-    },
-    {
-      "description": "Access-control initialization via secret URL parameter 'caffeineAdminToken' and backend '_initializeAccessControlWithSecret' call pattern.",
-      "reason": "BuildRequest only requires Internet Identity for auth and does not mention secret-token based access-control initialization or use of URL parameters for admin bootstrap.",
-      "evidence": [
-        "frontend/src/hooks/useActor.ts (getSecretParameter('caffeineAdminToken'); actor._initializeAccessControlWithSecret(adminToken))"
+        "frontend-file-summaries.txt"
       ]
     }
   ],
-  "confidence": 0.74,
+  "confidence": 0.62,
   "changed_files": [
-    "all_files_summary.json",
-    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
-    "frontend/src/components/auth/AdminRouteGuard.tsx",
-    "frontend/src/components/auth/LoginButton.tsx",
-    "frontend/src/components/brand/BrandLogo.tsx",
-    "frontend/src/components/contact/ContactForm.tsx",
-    "frontend/src/components/design/BrandTokens.ts",
-    "frontend/src/components/layout/Footer.tsx",
-    "frontend/src/components/layout/Header.tsx",
-    "frontend/src/components/layout/PageSection.tsx",
-    "frontend/src/components/layout/SiteLayout.tsx",
-    "frontend/src/components/projects/ProjectCard.tsx",
-    "frontend/src/components/projects/ProjectDetailModal.tsx",
-    "frontend/src/data/projects.ts",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useAdminInquiries.ts",
-    "frontend/src/hooks/useDocumentTitle.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/useSubmitContactForm.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/pages/AboutPage.tsx",
-    "frontend/src/pages/CompliancePage.tsx",
-    "frontend/src/pages/ContactPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/src/pages/ProjectsPage.tsx",
-    "frontend/src/pages/SafetyQualityPage.tsx",
-    "frontend/src/pages/ServicesPage.tsx",
-    "frontend/src/pages/admin/AdminInquiriesPage.tsx",
-    "frontend/src/utils/urlParams.ts",
-    "frontend/tailwind.config.js",
+    "frontend/EXPORT_ZIP.md",
+    "frontend/scripts/package-source.exclude.txt",
+    "frontend/scripts/package-source.sh",
     "project_state.json"
   ]
 }

@@ -1,176 +1,57 @@
 {
   "kind": "build_request",
-  "title": "Government-approved construction company website",
+  "title": "Provide downloadable ZIP of full project source code (frontend + backend)",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Create a responsive multi-page website for a government-approved construction company with the following pages/sections and English user-facing text: Home (hero + value proposition), About (company overview), Services, Projects/Portfolio, Government Approvals & Compliance (approval statement, certification/permit list, approval/registration numbers as text fields), Safety & Quality, and Contact (address/phone/email + contact form).",
-      "target": "frontend",
+      "text": "Add a repository-level packaging/export workflow that produces a single ZIP archive containing the full project source code (frontend + backend), suitable for the user to download and run locally.",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "create  website for constructions site which is by government approved"
+          "full project code"
         ]
       },
       "acceptanceCriteria": [
-        "Site includes navigation to Home, About, Services, Projects, Government Approvals & Compliance, Safety & Quality, and Contact sections/pages.",
-        "All pages render correctly on mobile and desktop and use English text.",
-        "Government Approvals & Compliance section includes clearly labeled fields for approval/registration details (with placeholder values that can be edited later)."
+        "A single ZIP archive (e.g., project-source.zip) can be generated that includes backend/ and frontend/ source files needed to build and deploy the app.",
+        "The ZIP archive excludes large/generated folders (e.g., node_modules/, .dfx/, dist/build artifacts) to keep the download small and source-focused.",
+        "The ZIP archive preserves required config files and manifests needed to run locally (e.g., dfx.json/package manifests if present) without manual reconstruction.",
+        "Running the packaging command/script twice produces a valid ZIP without errors and overwrites/updates the previous ZIP deterministically."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Implement a coherent visual theme suitable for a government-approved construction brand (professional, trustworthy, industrial) and apply it consistently across typography, spacing, colors, buttons, cards, and section layouts (avoid blue/purple as dominant colors).",
-      "target": "frontend",
+      "text": "Add clear, English documentation describing how to obtain and use the exported ZIP (how to unzip, install dependencies, run locally, and deploy to the Internet Computer).",
+      "target": "unknown",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "create  website for constructions site which is by government approved"
+          "full project code"
         ]
       },
       "acceptanceCriteria": [
-        "The site uses a consistent design system (colors, type scale, component styles) across all pages.",
-        "Primary palette is not dominated by blue/purple.",
-        "All major sections have clear hierarchy, readable contrast, and consistent spacing."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Add a reusable header (logo + navigation) and footer (quick links, contact details, business hours, and compliance disclaimer text) visible across the site.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "create  website for constructions site which is by government approved"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Header and footer appear consistently across all pages/sections.",
-        "Navigation highlights the current section/page and works on mobile (collapsible menu).",
-        "Footer contains a short disclaimer indicating approvals/certifications are subject to verification and may vary by project (placeholder wording editable later)."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Create a Projects/Portfolio section with a grid of project cards (title, location, year, short description, and image) and a project detail view/modal for each item using local seed data (no external API).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "create  website for constructions site which is by government approved"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Projects list displays at least 6 seeded project entries.",
-        "Each project card shows the required fields and an image.",
-        "Users can open a project detail view from the grid and return back easily."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Implement a Contact form that allows visitors to submit inquiries (name, email, phone, subject, message) and persist submissions in the Motoko backend canister.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "create  website for constructions site which is by government approved"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Contact form validates required fields and shows inline error messages.",
-        "On successful submission, the UI shows a confirmation state and clears the form.",
-        "Submissions are stored in the backend with an ID and timestamp and can be fetched back via a backend method."
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Add a simple admin-only page to view submitted contact inquiries (list view + detail view) protected by Internet Identity login; only authenticated users can access the admin route.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "create  website for constructions site which is by government approved"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Admin page is not accessible when logged out (redirect or access denied state).",
-        "When logged in, admin can see a list of inquiries stored in the backend and open an inquiry detail view.",
-        "Unauthenticated users cannot read inquiries from the UI."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Add basic SEO and trust signals: set page titles/metadata per page, include a prominent 'Government Approved' badge/mark on the Home page, and include an Approvals & Compliance summary block on the Home page that links to the full compliance page.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "create  website for constructions site which is by government approved"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Each page has an appropriate document title.",
-        "Home page includes a visible government-approval badge/mark and a short compliance summary block with a link to the compliance page/section.",
-        "Compliance page contains the expanded approvals/certification content referenced on Home."
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Integrate required generated images as static assets under frontend/public/assets/generated and reference them in the UI (no backend image serving).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "create  website for constructions site which is by government approved"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Generated images exist under frontend/public/assets/generated and render correctly in the relevant sections.",
-        "Images are loaded directly by the frontend and are not proxied through the backend."
+        "Documentation exists in a top-level README section or a dedicated markdown file and is written in English.",
+        "Docs include the exact steps to: unzip the project, install frontend dependencies, start the frontend, and deploy the Motoko canister with dfx.",
+        "Docs mention any prerequisites (e.g., Node.js/npm, DFX) and where the backend and frontend live in the folder structure."
       ]
     }
   ],
   "constraints": [
-    "Backend must remain a single Motoko actor (all backend logic in backend/main.mo).",
-    "Do not modify any files under frontend/src/components/ui (compose components instead).",
-    "Do not edit immutable hook/bootstrapping files listed by the platform (use safe wrappers/components where needed).",
-    "Do not use any third-party authentication providers; only Internet Identity is allowed."
+    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services.",
+    "Do not edit frontend files under the immutable paths listed in SYSTEM_CONTEXT (compose instead).",
+    "Do not add external databases or third-party auth providers; Internet Identity only."
   ],
   "nonGoals": [
-    "Implementing real-time chat or live project updates.",
-    "Integrating external government databases/APIs for automatic approval verification.",
-    "Adding e-commerce, payments, or client portals beyond the simple admin inquiries viewer.",
-    "Uploading files (e.g., permit PDFs) via the website."
+    "Adding new website features or changing existing UI/branding beyond what is required to support exporting/downloading the code.",
+    "Implementing an in-app code editor or serving source code ZIPs from the Motoko canister."
   ],
   "imageRequirements": {
-    "required": [
-      "Wide hero banner image: construction site with cranes, workers in safety gear, and a clean skyline (hero-construction.dim_1600x800.png)",
-      "Official-looking 'Government Approved' badge/seal graphic (gov-approved-badge.dim_512x512.png)",
-      "Simple construction company logo mark with text placeholder (construction-logo.dim_512x512.png)",
-      "Set of 6 project thumbnail images showing different construction project types (project-thumb-01.dim_800x600.png)",
-      "Set of 6 project thumbnail images showing different construction project types (project-thumb-02.dim_800x600.png)",
-      "Set of 6 project thumbnail images showing different construction project types (project-thumb-03.dim_800x600.png)",
-      "Set of 6 project thumbnail images showing different construction project types (project-thumb-04.dim_800x600.png)",
-      "Set of 6 project thumbnail images showing different construction project types (project-thumb-05.dim_800x600.png)",
-      "Set of 6 project thumbnail images showing different construction project types (project-thumb-06.dim_800x600.png)"
-    ],
+    "required": [],
     "edits": []
   },
   "userProfileUpdate": {

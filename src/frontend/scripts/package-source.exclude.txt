@@ -1,0 +1,78 @@
+# Exclude large/generated folders from source package
+# Node modules
+**/node_modules/*
+**/node_modules/**
+
+# Build outputs
+**/dist/*
+**/dist/**
+**/build/*
+**/build/**
+**/.next/*
+**/.next/**
+**/out/*
+**/out/**
+
+# DFX generated files
+**/.dfx/*
+**/.dfx/**
+
+# Cache directories
+**/.cache/*
+**/.cache/**
+**/.parcel-cache/*
+**/.parcel-cache/**
+**/.turbo/*
+**/.turbo/**
+
+# Coverage reports
+**/coverage/*
+**/coverage/**
+**/.nyc_output/*
+**/.nyc_output/**
+
+# Logs
+**/logs/*
+**/logs/**
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+**/lerna-debug.log*
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+**/*.swp
+**/*.swo
+**/*~
+
+# IDE files
+**/.vscode/*
+**/.idea/*
+**/*.sublime-*
+
+# Environment files (may contain secrets)
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Temporary files
+**/tmp/*
+**/tmp/**
+**/temp/*
+**/temp/**
+
+# Lock files (optional - uncomment if you want to exclude)
+# **/package-lock.json
+# **/yarn.lock
+# **/pnpm-lock.yaml
+
+# Git directory
+**/.git/*
+**/.git/**
+**/.gitignore
+
+# The output ZIP itself
+project-source.zip

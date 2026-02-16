@@ -1,297 +1,43 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Government-approved construction company multi-page website (frontend)",
+  "title": "Source export ZIP packaging (frontend-only wiring)",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Build a responsive multi-page marketing site with required sections/pages and English copy, including a compliance page with labeled approval fields and a contact section with details + form UI.",
+      "summary": "Add a packaging workflow script that generates a single deterministic ZIP containing full project source while excluding large/generated folders.",
       "acceptanceCriteria": [
-        "Site includes navigation to Home, About, Services, Projects, Government Approvals & Compliance, Safety & Quality, and Contact sections/pages.",
-        "All pages render correctly on mobile and desktop and use English text.",
-        "Government Approvals & Compliance section includes clearly labeled fields for approval/registration details (with placeholder values that can be edited later)."
+        "A single ZIP archive (e.g., project-source.zip) can be generated that includes backend/ and frontend/ source files needed to build and deploy the app.",
+        "The ZIP archive excludes large/generated folders (e.g., node_modules/, .dfx/, dist/build artifacts) to keep the download small and source-focused.",
+        "The ZIP archive preserves required config files and manifests needed to run locally (e.g., dfx.json/package manifests if present) without manual reconstruction.",
+        "Running the packaging command/script twice produces a valid ZIP without errors and overwrites/updates the previous ZIP deterministically."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/scripts/package-source.sh",
           "operation": "create",
-          "description": "Create the root app layout that renders a shared Header/Footer and wires top-level routing for: Home, About, Services, Projects/Portfolio, Government Approvals & Compliance, Safety & Quality, Contact, and Admin Inquiries. Ensure page-level wrappers support responsive spacing and consistent section layouts."
+          "description": "Create a repo packaging script that runs from within frontend/ and produces a single ZIP archive (e.g., ../project-source.zip) containing the full project source (frontend/ + backend/ + key repo config files), while excluding large/generated directories (node_modules, .dfx, dist/build outputs, cache folders). Ensure deterministic overwrite by deleting/overwriting any existing ZIP and using stable exclusion patterns."
         },
         {
-          "path": "frontend/src/pages/HomePage.tsx",
+          "path": "frontend/scripts/package-source.exclude.txt",
           "operation": "create",
-          "description": "Implement the Home page with hero + value proposition (English text), including the government-approved badge/mark and an approvals/compliance summary block that links to the Compliance page."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "create",
-          "description": "Implement the About page with company overview content and responsive layout (English text)."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "create",
-          "description": "Implement the Services page with a structured list of services (cards/sections) in English and responsive layout."
-        },
-        {
-          "path": "frontend/src/pages/CompliancePage.tsx",
-          "operation": "create",
-          "description": "Implement the Government Approvals & Compliance page with an approval statement and a clearly labeled list of editable placeholder fields for certifications/permits and approval/registration numbers (as text fields displayed in the UI)."
-        },
-        {
-          "path": "frontend/src/pages/SafetyQualityPage.tsx",
-          "operation": "create",
-          "description": "Implement the Safety & Quality page describing safety culture, QA/QC processes, and standards commitments (English text) with a consistent layout."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "create",
-          "description": "Implement the Contact page including address/phone/email display and the inquiry form UI (form submission behavior is covered in REQ-5)."
-        },
-        {
-          "path": "frontend/src/components/layout/PageSection.tsx",
-          "operation": "create",
-          "description": "Create a reusable section wrapper to standardize spacing, max-width, headings, and responsive layout across all pages."
+          "description": "Add a centralized exclude-pattern list referenced by the packaging script to keep the ZIP source-focused (e.g., node_modules/, .dfx/, dist/, build artifacts, coverage, caches). This supports consistency across repeated runs."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Apply a coherent professional construction/government-approved visual theme consistently across the site (avoid blue/purple dominance).",
+      "summary": "Add English documentation describing how to generate, obtain, and use the exported ZIP to run locally and deploy to the Internet Computer.",
       "acceptanceCriteria": [
-        "The site uses a consistent design system (colors, type scale, component styles) across all pages.",
-        "Primary palette is not dominated by blue/purple.",
-        "All major sections have clear hierarchy, readable contrast, and consistent spacing."
+        "Documentation exists in a top-level README section or a dedicated markdown file and is written in English.",
+        "Docs include the exact steps to: unzip the project, install frontend dependencies, start the frontend, and deploy the Motoko canister with dfx.",
+        "Docs mention any prerequisites (e.g., Node.js/npm, DFX) and where the backend and frontend live in the folder structure."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/EXPORT_ZIP.md",
           "operation": "create",
-          "description": "Define global theme tokens (CSS variables used by Tailwind config) and global typography defaults to create a professional industrial look (e.g., charcoal/graphite + safety orange/amber accents, neutral backgrounds). Ensure contrast and spacing defaults are consistent site-wide."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Adjust Tailwind theme token defaults (via existing CSS-variable-backed palette) to ensure the brand’s primary/accent colors are not dominated by blue/purple and align with construction/government-approved styling."
-        },
-        {
-          "path": "frontend/src/components/design/BrandTokens.ts",
-          "operation": "create",
-          "description": "Centralize brand constants (e.g., brand name, contact details, business hours) so typography/labels and recurring UI strings remain consistent across pages."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add a reusable responsive header and footer across all pages with mobile navigation and compliance disclaimer text.",
-      "acceptanceCriteria": [
-        "Header and footer appear consistently across all pages/sections.",
-        "Navigation highlights the current section/page and works on mobile (collapsible menu).",
-        "Footer contains a short disclaimer indicating approvals/certifications are subject to verification and may vary by project (placeholder wording editable later)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "create",
-          "description": "Create a responsive header with logo, primary navigation links, and a mobile collapsible menu. Include current page highlighting based on active route."
-        },
-        {
-          "path": "frontend/src/components/layout/Footer.tsx",
-          "operation": "create",
-          "description": "Create a footer with quick links, contact details, business hours, and a compliance disclaimer (editable placeholder wording)."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteLayout.tsx",
-          "operation": "create",
-          "description": "Create a shared layout component that renders Header + Footer around routed page content and applies consistent container spacing."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wire SiteLayout so Header/Footer are visible across all pages and ensure navigation items map to the required routes."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Add a Projects/Portfolio grid with seeded local project data and per-project detail view/modal.",
-      "acceptanceCriteria": [
-        "Projects list displays at least 6 seeded project entries.",
-        "Each project card shows the required fields and an image.",
-        "Users can open a project detail view from the grid and return back easily."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/data/projects.ts",
-          "operation": "create",
-          "description": "Add local seeded project data (>= 6 items) including title, location, year, short description, long description (for detail), and image references to the generated thumbnails."
-        },
-        {
-          "path": "frontend/src/pages/ProjectsPage.tsx",
-          "operation": "create",
-          "description": "Implement the Projects/Portfolio page with a responsive grid of project cards rendering required fields and images from local seed data."
-        },
-        {
-          "path": "frontend/src/components/projects/ProjectCard.tsx",
-          "operation": "create",
-          "description": "Create a reusable project card component for the grid showing title, location, year, short description, and thumbnail image."
-        },
-        {
-          "path": "frontend/src/components/projects/ProjectDetailModal.tsx",
-          "operation": "create",
-          "description": "Create a project detail view/modal component that can be opened from a card and closed to return to the grid easily."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wire the Projects route and ensure the detail view/modal can be triggered from the Projects page without orphaned UI."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Implement the Contact form UI with validation and submission via the existing backend actor, showing confirmation state and clearing the form on success.",
-      "acceptanceCriteria": [
-        "Contact form validates required fields and shows inline error messages.",
-        "On successful submission, the UI shows a confirmation state and clears the form.",
-        "Submissions are stored in the backend with an ID and timestamp and can be fetched back via a backend method."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/contact/ContactForm.tsx",
-          "operation": "create",
-          "description": "Create a contact form component with fields: name, email, phone, subject, message; include required-field validation and inline error messaging; show a success confirmation state and clear the form after successful submit via the actor capability submitContactForm."
-        },
-        {
-          "path": "frontend/src/hooks/useSubmitContactForm.ts",
-          "operation": "create",
-          "description": "Add a React Query mutation hook that uses useActor to call submitContactForm and exposes loading/success/error states for the ContactForm."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Wire the ContactForm into the Contact page alongside address/phone/email content, and ensure the page layout remains responsive."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Add an admin-only inquiries viewer page (list + detail) protected by Internet Identity login and admin authorization checks.",
-      "acceptanceCriteria": [
-        "Admin page is not accessible when logged out (redirect or access denied state).",
-        "When logged in, admin can see a list of inquiries stored in the backend and open an inquiry detail view.",
-        "Unauthenticated users cannot read inquiries from the UI."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/admin/AdminInquiriesPage.tsx",
-          "operation": "create",
-          "description": "Create an admin-only page that fetches submissions via the actor capability getAllSubmissions and renders a list with selectable detail view. Use the selected \"authorization\" component patterns for authenticated-only data access and admin gating. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/auth/AdminRouteGuard.tsx",
-          "operation": "create",
-          "description": "Create a guard component that requires Internet Identity login and checks admin status (e.g., via actor.isCallerAdmin or role) before rendering admin content; otherwise show an access denied state or redirect. Use the selected \"authorization\" component guidance for access control UI and handling authorization failures. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/auth/LoginButton.tsx",
-          "operation": "create",
-          "description": "Create a login/logout button using useInternetIdentity and clear cached data on logout (React Query cache clear). Use the selected \"authorization\" component’s login/logout and cache-clearing guidance. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useAdminInquiries.ts",
-          "operation": "create",
-          "description": "Add React Query hooks for reading inquiries (getAllSubmissions and getSubmissionByIndex) that are enabled only when authenticated and authorized (admin) to prevent unauthenticated reads from the UI. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wire the admin route and wrap it with AdminRouteGuard; ensure it is not linked prominently in public navigation unless explicitly desired, but is reachable for authenticated admins."
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Add basic SEO metadata (document titles per page) and trust signals on Home including the Government Approved badge and compliance summary linking to the compliance page.",
-      "acceptanceCriteria": [
-        "Each page has an appropriate document title.",
-        "Home page includes a visible government-approval badge/mark and a short compliance summary block with a link to the compliance page/section.",
-        "Compliance page contains the expanded approvals/certification content referenced on Home."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/hooks/useDocumentTitle.ts",
-          "operation": "create",
-          "description": "Create a small hook that sets document.title on mount/update for each page to provide appropriate page titles without adding new dependencies."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Set a Home-specific document title and ensure the Government Approved badge and compliance summary block link to the full Compliance page."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Set an About-specific document title via the shared hook."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Set a Services-specific document title via the shared hook."
-        },
-        {
-          "path": "frontend/src/pages/ProjectsPage.tsx",
-          "operation": "modify",
-          "description": "Set a Projects-specific document title via the shared hook."
-        },
-        {
-          "path": "frontend/src/pages/CompliancePage.tsx",
-          "operation": "modify",
-          "description": "Set a Compliance-specific document title and ensure content expands on the Home compliance summary."
-        },
-        {
-          "path": "frontend/src/pages/SafetyQualityPage.tsx",
-          "operation": "modify",
-          "description": "Set a Safety & Quality-specific document title via the shared hook."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Set a Contact-specific document title via the shared hook."
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Reference the required generated images from frontend/public/assets/generated directly in the UI for hero, logo, badge, and project thumbnails.",
-      "acceptanceCriteria": [
-        "Generated images exist under frontend/public/assets/generated and render correctly in the relevant sections.",
-        "Images are loaded directly by the frontend and are not proxied through the backend."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/brand/BrandLogo.tsx",
-          "operation": "create",
-          "description": "Create a logo component that renders the static logo image from frontend/public/assets/generated/construction-logo.dim_512x512.png and is used in the site header/footer."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Reference and render the hero banner image frontend/public/assets/generated/hero-construction.dim_1600x800.png and the badge image frontend/public/assets/generated/gov-approved-badge.dim_512x512.png within the Home hero/trust signals section."
-        },
-        {
-          "path": "frontend/src/data/projects.ts",
-          "operation": "modify",
-          "description": "Map each seeded project to one of the required thumbnail assets: frontend/public/assets/generated/project-thumb-01.dim_800x600.png, frontend/public/assets/generated/project-thumb-02.dim_800x600.png, frontend/public/assets/generated/project-thumb-03.dim_800x600.png, frontend/public/assets/generated/project-thumb-04.dim_800x600.png, frontend/public/assets/generated/project-thumb-05.dim_800x600.png, frontend/public/assets/generated/project-thumb-06.dim_800x600.png."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Wire BrandLogo into the Header so the generated logo asset is visibly used across the site."
-        },
-        {
-          "path": "frontend/src/components/layout/Footer.tsx",
-          "operation": "modify",
-          "description": "Optionally reuse BrandLogo in the Footer to reinforce branding and confirm the generated asset renders correctly outside the Home page."
+          "description": "Create English documentation describing: prerequisites (Node.js/npm, DFX), how to run the packaging script to generate the ZIP, how to unzip it, where frontend/ and backend/ live, how to install frontend dependencies, how to start the frontend locally, and how to deploy the Motoko canister with dfx."
         }
       ]
     }

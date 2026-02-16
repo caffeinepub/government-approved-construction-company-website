@@ -2,17 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-responsive-multi-page-website-for-a-government-approved-construction-company-with-the-following-pages-sections-and-english-user-facing-text-home-hero-value-proposition-about-company-overview-services-projects-portfolio-government-approvals-compliance-approval-statement-certification-permit-list-approval-registration-numbers-as-text-fields-safety-quality-and-contact-address-phone-email-contact-form",
-      "featureTitle": "Create a responsive multi-page website for a government-approved construction company with the following pages/sections and English user-facing text: Home (hero + value proposition), About (company overview), Services, Projects/Portfolio, Government Approvals & Compliance (approval statement, certification/permit list, approval/registration numbers as text fields), Safety & Quality, and Contact (address/phone/email + contact form).",
+      "featureId": "feature-add-a-repository-level-packaging-export-workflow-that-produces-a-single-zip-archive-containing-the-full-project-source-code-frontend-backend-suitable-for-the-user-to-download-and-run-locally",
+      "featureTitle": "Add a repository-level packaging/export workflow that produces a single ZIP archive containing the full project source code (frontend + backend), suitable for the user to download and run locally.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/layout/PageSection.tsx",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/CompliancePage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/SafetyQualityPage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
+        "frontend/scripts/package-source.exclude.txt",
+        "frontend/scripts/package-source.sh"
       ],
       "components": [
         "authorization@4.0.0",
@@ -28,12 +22,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-a-coherent-visual-theme-suitable-for-a-government-approved-construction-brand-professional-trustworthy-industrial-and-apply-it-consistently-across-typography-spacing-colors-buttons-cards-and-section-layouts-avoid-blue-purple-as-dominant-colors",
-      "featureTitle": "Implement a coherent visual theme suitable for a government-approved construction brand (professional, trustworthy, industrial) and apply it consistently across typography, spacing, colors, buttons, cards, and section layouts (avoid blue/purple as dominant colors).",
+      "featureId": "feature-add-clear-english-documentation-describing-how-to-obtain-and-use-the-exported-zip-how-to-unzip-install-dependencies-run-locally-and-deploy-to-the-internet-computer",
+      "featureTitle": "Add clear, English documentation describing how to obtain and use the exported ZIP (how to unzip, install dependencies, run locally, and deploy to the Internet Computer).",
       "files": [
-        "frontend/src/components/design/BrandTokens.ts",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/EXPORT_ZIP.md"
       ],
       "components": [
         "authorization@4.0.0",
@@ -45,144 +37,6 @@
       ],
       "testIds": [
         "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-reusable-header-logo-navigation-and-footer-quick-links-contact-details-business-hours-and-compliance-disclaimer-text-visible-across-the-site",
-      "featureTitle": "Add a reusable header (logo + navigation) and footer (quick links, contact details, business hours, and compliance disclaimer text) visible across the site.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/layout/Footer.tsx",
-        "frontend/src/components/layout/Header.tsx",
-        "frontend/src/components/layout/SiteLayout.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-create-a-projects-portfolio-section-with-a-grid-of-project-cards-title-location-year-short-description-and-image-and-a-project-detail-view-modal-for-each-item-using-local-seed-data-no-external-api",
-      "featureTitle": "Create a Projects/Portfolio section with a grid of project cards (title, location, year, short description, and image) and a project detail view/modal for each item using local seed data (no external API).",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/projects/ProjectCard.tsx",
-        "frontend/src/components/projects/ProjectDetailModal.tsx",
-        "frontend/src/data/projects.ts",
-        "frontend/src/pages/ProjectsPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-a-contact-form-that-allows-visitors-to-submit-inquiries-name-email-phone-subject-message-and-persist-submissions-in-the-motoko-backend-canister",
-      "featureTitle": "Implement a Contact form that allows visitors to submit inquiries (name, email, phone, subject, message) and persist submissions in the Motoko backend canister.",
-      "files": [
-        "frontend/src/components/contact/ContactForm.tsx",
-        "frontend/src/hooks/useSubmitContactForm.ts",
-        "frontend/src/pages/ContactPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-simple-admin-only-page-to-view-submitted-contact-inquiries-list-view-detail-view-protected-by-internet-identity-login-only-authenticated-users-can-access-the-admin-route",
-      "featureTitle": "Add a simple admin-only page to view submitted contact inquiries (list view + detail view) protected by Internet Identity login; only authenticated users can access the admin route.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/auth/AdminRouteGuard.tsx",
-        "frontend/src/components/auth/LoginButton.tsx",
-        "frontend/src/hooks/useAdminInquiries.ts",
-        "frontend/src/pages/admin/AdminInquiriesPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-basic-seo-and-trust-signals-set-page-titles-metadata-per-page-include-a-prominent-government-approved-badge-mark-on-the-home-page-and-include-an-approvals-compliance-summary-block-on-the-home-page-that-links-to-the-full-compliance-page",
-      "featureTitle": "Add basic SEO and trust signals: set page titles/metadata per page, include a prominent 'Government Approved' badge/mark on the Home page, and include an Approvals & Compliance summary block on the Home page that links to the full compliance page.",
-      "files": [
-        "frontend/src/hooks/useDocumentTitle.ts",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/CompliancePage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ProjectsPage.tsx",
-        "frontend/src/pages/SafetyQualityPage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-integrate-required-generated-images-as-static-assets-under-frontend-public-assets-generated-and-reference-them-in-the-ui-no-backend-image-serving",
-      "featureTitle": "Integrate required generated images as static assets under frontend/public/assets/generated and reference them in the UI (no backend image serving).",
-      "files": [
-        "frontend/src/components/brand/BrandLogo.tsx",
-        "frontend/src/components/layout/Footer.tsx",
-        "frontend/src/components/layout/Header.tsx",
-        "frontend/src/data/projects.ts",
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
       ],
       "confidence": "high"
     }

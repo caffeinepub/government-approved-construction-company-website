@@ -1,16 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Build a responsive, professional multi-page website for a government-approved construction company, including a portfolio, compliance information, and a contact workflow with an admin-only inquiries viewer.
+**Goal:** Add a repository-level workflow to export the full project source (frontend + backend) as a single downloadable ZIP, with clear instructions for using it locally and deploying to the Internet Computer.
 
 **Planned changes:**
-- Create responsive pages/sections: Home (hero + value proposition), About, Services, Projects/Portfolio, Government Approvals & Compliance (editable placeholder fields for approvals/certifications/permit list and registration numbers), Safety & Quality, and Contact (company details + form).
-- Implement a consistent visual theme suitable for a trustworthy industrial/construction brand, avoiding blue/purple as dominant colors.
-- Add a reusable header (logo + navigation with mobile collapsible menu and current-page highlighting) and footer (quick links, contact details, business hours, and an editable compliance disclaimer).
-- Build a Projects/Portfolio grid with at least 6 seeded projects (title, location, year, description, image) and a project detail view/modal.
-- Implement a Contact form with validation that stores submissions (ID + timestamp) in a single Motoko backend actor and supports fetching stored submissions.
-- Add an admin-only page protected by Internet Identity login to view inquiries (list + detail), with logged-out users blocked from access.
-- Add basic SEO and trust signals: per-page titles/metadata, a visible “Government Approved” badge on Home, and a Home compliance summary block linking to the full compliance page.
-- Add required generated images as static assets under `frontend/public/assets/generated` and reference them in the UI.
+- Add a deterministic packaging/export command or script that creates one ZIP archive containing both frontend/ and backend/ source code.
+- Configure the export to exclude large/generated directories (e.g., node_modules/, .dfx/, dist/build artifacts) while preserving required manifests/config needed to run locally.
+- Add English documentation (README section or dedicated markdown file) explaining how to generate the ZIP, unzip it, install dependencies, run the frontend locally, and deploy the Motoko canister with dfx (including prerequisites and folder structure).
 
-**User-visible outcome:** Visitors can browse a polished construction company website, view services and project portfolio details, review government approvals/compliance and safety information, and submit inquiries; authenticated admins can log in to view submitted inquiries.
+**User-visible outcome:** The user can run a single command to generate an up-to-date project-source ZIP and follow documented steps to unzip, run the app locally, and deploy it to the Internet Computer.
